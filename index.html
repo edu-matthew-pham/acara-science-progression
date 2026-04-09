@@ -10,17 +10,24 @@
   h1 { font-size: 18px; font-weight: 500; padding: 20px 24px 4px; }
   .subtitle { font-size: 13px; color: #888; padding: 0 24px 16px; }
 
-  .controls { display: flex; gap: 8px; flex-wrap: wrap; padding: 0 24px 16px; }
+  .controls {
+    display: flex; align-items: center;
+    gap: 8px; flex-wrap: wrap; padding: 0 24px 16px;
+  }
   .strand-btn {
     font-size: 12px; padding: 5px 14px; border-radius: 20px;
     border: 1px solid #ccc; background: #fff;
     color: #555; cursor: pointer; transition: all .15s;
   }
-  .strand-btn.active { color: #fff; border-color: transparent; font-weight: 500; }
-  .strand-btn.active.bio   { background: #1D9E75; }
-  .strand-btn.active.earth { background: #378ADD; }
-  .strand-btn.active.phys  { background: #BA7517; }
-  .strand-btn.active.chem  { background: #D85A30; }
+
+  /* All toggle */
+  .strand-btn.active-all { background: #444; color: #fff; border-color: transparent; font-weight: 500; }
+
+  /* Per-strand active states */
+  .strand-btn.active-bio   { background: #1D9E75; color: #fff; border-color: transparent; font-weight: 500; }
+  .strand-btn.active-earth { background: #378ADD; color: #fff; border-color: transparent; font-weight: 500; }
+  .strand-btn.active-phys  { background: #BA7517; color: #fff; border-color: transparent; font-weight: 500; }
+  .strand-btn.active-chem  { background: #D85A30; color: #fff; border-color: transparent; font-weight: 500; }
 
   #tree-wrap { overflow-x: auto; padding: 0 24px 32px; }
   svg { display: block; }
@@ -32,7 +39,7 @@
     box-shadow: 0 4px 16px rgba(0,0,0,0.1);
   }
   #tooltip.show { opacity: 1; }
-  #tt-code  { font-size: 11px; color: #999; margin-bottom: 3px; }
+  #tt-code  { font-size: 11px; margin-bottom: 3px; font-weight: 600; }
   #tt-title { font-size: 13px; font-weight: 600; color: #222; margin-bottom: 6px; }
   #tt-goal  { font-size: 12px; color: #555; line-height: 1.55; }
 </style>
@@ -40,7 +47,7 @@
 <body>
 
 <h1>Science Y-Goals Progression Map</h1>
-<p class="subtitle">Hover a node to see the Y-goal. Filter by strand.</p>
+<p class="subtitle">Click strands to toggle them on or off. Hover a node to see the Y-goal.</p>
 <div class="controls" id="strand-controls"></div>
 <div id="tree-wrap"><svg id="tree-svg"></svg></div>
 
