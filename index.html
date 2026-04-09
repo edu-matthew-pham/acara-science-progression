@@ -7,12 +7,9 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: system-ui, sans-serif; background: #f8f8f6; color: #2c2c2a; }
-
   .header { padding: 20px 24px 0; }
   h1 { font-size: 18px; font-weight: 500; }
   .subtitle { font-size: 13px; color: #888; margin-top: 4px; }
-
-  /* Mode tabs */
   .tabs { display: flex; gap: 4px; padding: 16px 24px 0; border-bottom: 1px solid #e0e0de; }
   .tab {
     font-size: 13px; padding: 7px 18px; border-radius: 8px 8px 0 0;
@@ -20,35 +17,22 @@
     background: transparent; color: #888; cursor: pointer; transition: all .15s;
     margin-bottom: -1px;
   }
-  .tab.active {
-    background: #f8f8f6; border-color: #e0e0de;
-    color: #2c2c2a; font-weight: 500;
-  }
-
-  /* Strand filter buttons */
-  .controls {
-    display: flex; align-items: center;
-    gap: 8px; flex-wrap: wrap; padding: 14px 24px 12px;
-  }
+  .tab.active { background: #f8f8f6; border-color: #e0e0de; color: #2c2c2a; font-weight: 500; }
+  .controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 14px 24px 12px; }
   .strand-btn {
     font-size: 12px; padding: 5px 14px; border-radius: 20px;
     border: 1px solid #ccc; background: #fff;
     color: #555; cursor: pointer; transition: all .15s;
   }
-  .strand-btn.active-all   { background: #444;     color: #fff; border-color: transparent; font-weight: 500; }
-  .strand-btn.active-bio   { background: #1D9E75;  color: #fff; border-color: transparent; font-weight: 500; }
-  .strand-btn.active-earth { background: #378ADD;  color: #fff; border-color: transparent; font-weight: 500; }
-  .strand-btn.active-phys  { background: #BA7517;  color: #fff; border-color: transparent; font-weight: 500; }
-  .strand-btn.active-chem  { background: #D85A30;  color: #fff; border-color: transparent; font-weight: 500; }
-  .strand-btn.active-hend  { background: #7C5CBF;  color: #fff; border-color: transparent; font-weight: 500; }
-  .strand-btn.active-inq   { background: #2A8FA8;  color: #fff; border-color: transparent; font-weight: 500; }
-
+  .strand-btn.active-all   { background: #444;    color: #fff; border-color: transparent; font-weight: 500; }
+  .strand-btn.active-bio   { background: #1D9E75; color: #fff; border-color: transparent; font-weight: 500; }
+  .strand-btn.active-earth { background: #378ADD; color: #fff; border-color: transparent; font-weight: 500; }
+  .strand-btn.active-phys  { background: #BA7517; color: #fff; border-color: transparent; font-weight: 500; }
+  .strand-btn.active-chem  { background: #D85A30; color: #fff; border-color: transparent; font-weight: 500; }
   .panel { display: none; }
   .panel.active { display: block; }
-
   #tree-wrap { overflow-x: auto; padding: 0 24px 32px; }
   svg { display: block; }
-
   #tooltip {
     position: fixed; pointer-events: none; opacity: 0; transition: opacity .15s;
     background: #fff; border: 1px solid #ddd; border-radius: 10px;
@@ -73,13 +57,11 @@
   <button class="tab"        id="tab-capabilities" onclick="switchTab('capabilities')">Capabilities</button>
 </div>
 
-<!-- Concepts panel -->
 <div class="panel active" id="panel-concepts">
   <div class="controls" id="strand-controls-concepts"></div>
   <div id="tree-wrap"><svg id="tree-svg-concepts"></svg></div>
 </div>
 
-<!-- Capabilities panel -->
 <div class="panel" id="panel-capabilities">
   <div class="controls" id="strand-controls-capabilities"></div>
   <div style="overflow-x:auto; padding: 0 24px 32px;">
@@ -94,12 +76,47 @@
 </div>
 
 <script>
-  function switchTab(mode) {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    document.getElementById('tab-' + mode).classList.add('active');
-    document.getElementById('panel-' + mode).classList.add('active');
-  }
+function switchTab(mode) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + mode).classList.add('active');
+  document.getElementById('panel-' + mode).classList.add('active');
+}
+
+// Config for generic concepts renderer
+window.CONCEPTS_CONFIG = {
+  dataUrl:    './science_y_goals_map.json',
+  levelOrder: ["F","1","2","3","4","5","6","7","8","9","10"],
+  levelLabels: {
+    "F":"F","1":"Y1","2":"Y2","3":"Y3","4":"Y4","5":"Y5",
+    "6":"Y6","7":"Y7","8":"Y8","9":"Y9","10":"Y10"
+  },
+  strandConfig: {
+    biological:  { color: "#1D9E75", cssKey: "bio"   },
+    earth_space: { color: "#378ADD", cssKey: "earth" },
+    physical:    { color: "#BA7517", cssKey: "phys"  },
+    chemical:    { color: "#D85A30", cssKey: "chem"  }
+  },
+  strandOrder: ["biological", "earth_space", "physical", "chemical"],
+  goalField:   "y_goal",
+  svgId:       "tree-svg-concepts",
+  controlsId:  "strand-controls-concepts"
+};
+
+// Config for generic capabilities renderer
+window.CAPABILITIES_CONFIG = {
+  dataUrl:    './science_capability_map.json',
+  bandOrder:  ["F", "1-2", "3-4", "5-6", "7-8", "9-10"],
+  bandLabels: { "F":"F", "1-2":"Y1-2", "3-4":"Y3-4", "5-6":"Y5-6", "7-8":"Y7-8", "9-10":"Y9-10" },
+  strandConfig: {
+    human_endeavour: { color: "#5B3FA0", cssKey: "hend", label: "Science as a Human Endeavour" },
+    inquiry:         { color: "#1A6E82", cssKey: "inq",  label: "Science Inquiry" }
+  },
+  strandOrder: ["human_endeavour", "inquiry"],
+  goalField:   "capability_goal",
+  svgId:       "tree-svg-capabilities",
+  controlsId:  "strand-controls-capabilities"
+};
 </script>
 
 <script src="render-concepts.js"></script>
