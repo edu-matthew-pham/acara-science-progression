@@ -1,16 +1,25 @@
 // ─── Layout constants ────────────────────────────────────────────────
-const NODE_W      = 110;
-const NODE_H      = 56;
-const COL_W       = 130;
-const ROW_H       = 72;   // vertical spacing between nodes within a strand band
-const STRAND_GAP  = 24;   // gap between strand bands
+const NODE_W          = 110;
+const NODE_H          = 56;
+const COL_W           = 130;
+const ROW_H           = 72;
+const STRAND_GAP      = 24;
 const ROWS_PER_STRAND = 2;
-const BAND_H      = ROWS_PER_STRAND * ROW_H;
-const HEADER_H    = 48;
-const START_X     = 110;  // enough room for rotated strand label left of F column
-const LABEL_X     = 16;   // x centre of the rotated strand label
+const BAND_H          = ROWS_PER_STRAND * ROW_H;
+const HEADER_H        = 48;
+const START_X         = 110;
+const LABEL_X         = 16;
 
-const YEAR_ORDER = ["F","1","2","3","4","5","6","7","8","9","10"];
+const YEAR_ORDER   = ["F","1","2","3","4","5","6","7","8","9","10"];
+
+// Visual config not stored in JSON — keyed to match schema strand keys
+const STRAND_CONFIG = {
+  biological: { color: "#1D9E75", cssKey: "bio"   },
+  earth_space:{ color: "#378ADD", cssKey: "earth" },
+  physical:   { color: "#BA7517", cssKey: "phys"  },
+  chemical:   { color: "#D85A30", cssKey: "chem"  }
+};
+// Render order — matches schema strand key order
 const STRAND_ORDER = ["biological", "earth_space", "physical", "chemical"];
 
 const YEAR_X = {};
@@ -24,10 +33,10 @@ function getYear(code) {
   return m[1] === "F" ? "F" : String(parseInt(m[1]));
 }
 
-function getMeta(code) {
+function getMeta(code, yearLevels) {
   const yr = getYear(code);
   if (!yr) return null;
-  const yl = DATA.year_levels[yr];
+  const yl = yearLevels[yr];
   if (!yl) return null;
   return yl.standards.find(s => s.code === code) || null;
 }
@@ -54,10 +63,7 @@ function elbowPath(ax, ay, bx, by) {
   const x2   = bx - NODE_W / 2;
   const gapX = x1 + (x2 - x1) / 2;
   const r    = 6;
-
-  if (Math.abs(ay - by) < 4) {
-    return `M${x1},${ay} L${x2},${by}`;
-  }
+  if (Math.abs(ay - by) < 4) return `M${x1},${ay} L${x2},${by}`;
   const vDir = by > ay ? 1 : -1;
   return [
     `M${x1},${ay}`,
@@ -82,8 +88,8 @@ const tip = document.getElementById("tooltip");
 function showTip(e, code, meta, color) {
   document.getElementById("tt-code").textContent  = code;
   document.getElementById("tt-code").style.color  = color;
-  document.getElementById("tt-title").textContent = meta ? meta.title  : code;
-  document.getElementById("tt-goal").textContent  = meta ? meta.y_goal : "(no Y-goal found)";
+  document.getElementById("tt-title").textContent = meta ? meta.title       : code;
+  document.getElementById("tt-goal").textContent  = meta ? meta.y_goal      : "(no Y-goal found)";
   tip.classList.add("show");
   moveTip(e);
 }
@@ -97,8 +103,10 @@ function hideTip() { tip.classList.remove("show"); }
 const activeStrands = new Set(STRAND_ORDER);
 
 // ─── Main render ─────────────────────────────────────────────────────
-function render() {
-  // Calculate Y offset for each active strand band
+function render(data) {
+  const yearLevels = data.year_levels;
+  const strands    = data.progression_threads.strands;
+
   const strandBandY = {};
   let y = HEADER_H;
   STRAND_ORDER.forEach(key => {
@@ -108,24 +116,22 @@ function render() {
   });
 
   const SVG_H = y + 16;
-
-  const svg = document.getElementById("tree-svg");
+  const svg   = document.getElementById("tree-svg");
   svg.innerHTML = "";
   svg.setAttribute("viewBox", `0 0 ${SVG_W} ${SVG_H}`);
   svg.setAttribute("width",   SVG_W);
   svg.setAttribute("height",  SVG_H);
 
-  // Year column headers (always visible)
+  // Year column headers
   const activeYears = new Set();
   STRAND_ORDER.forEach(key => {
-    if (!activeStrands.has(key)) return;
-    const strand = DATA.strands[key];
+    if (!activeStrands.has(key) || !strands[key]) return;
     function collectYears(node) {
       const yr = getYear(node.code);
       if (yr) activeYears.add(yr);
       node.children.forEach(collectYears);
     }
-    strand.tree.forEach(collectYears);
+    strands[key].tree.forEach(collectYears);
   });
 
   YEAR_ORDER.forEach(yr => {
@@ -145,14 +151,14 @@ function render() {
     lbl.textContent = yr === "F" ? "F" : `Y${yr}`;
   });
 
-  // Render each active strand in its own band
+  // Render each active strand band
   STRAND_ORDER.forEach(key => {
-    if (!activeStrands.has(key)) return;
-    const strand  = DATA.strands[key];
-    const color   = strand.color;
-    const bandY   = strandBandY[key];
+    if (!activeStrands.has(key) || !strands[key]) return;
+    const strand = strands[key];
+    const cfg    = STRAND_CONFIG[key];
+    const color  = cfg.color;
+    const bandY  = strandBandY[key];
 
-    // Collect nodes and edges for this strand
     const nodeSet = new Set();
     const edges   = [];
     function walk(node, parent) {
@@ -162,7 +168,6 @@ function render() {
     }
     strand.tree.forEach(root => walk(root, null));
 
-    // Assign row within this band: bucket by year, up to 2 per column
     const yearBuckets = {};
     nodeSet.forEach(code => {
       const yr = getYear(code);
@@ -171,21 +176,17 @@ function render() {
       if (!yearBuckets[yr].includes(code)) yearBuckets[yr].push(code);
     });
 
-    // Node positions: row 0 or 1 within the band
     const nodePos = {};
     Object.entries(yearBuckets).forEach(([yr, codes]) => {
       const x = YEAR_X[yr];
       codes.forEach((code, i) => {
         const row = Math.min(i, ROWS_PER_STRAND - 1);
-        nodePos[code] = {
-          x,
-          y: bandY + row * ROW_H + NODE_H / 2 + 4
-        };
+        nodePos[code] = { x, y: bandY + row * ROW_H + NODE_H / 2 + 4 };
       });
     });
 
-    // Strand label — rotated, sitting in the left margin before the F column
-    const midBandY = bandY + BAND_H / 2;
+    // Rotated strand label in left margin
+    const midBandY  = bandY + BAND_H / 2;
     const strandLbl = svgEl("text", {
       x: LABEL_X, y: midBandY,
       "text-anchor": "middle", "dominant-baseline": "central",
@@ -216,7 +217,7 @@ function render() {
     nodeSet.forEach(code => {
       const pos   = nodePos[code];
       if (!pos) return;
-      const meta  = getMeta(code);
+      const meta  = getMeta(code, yearLevels);
       const title = meta ? meta.title : code;
       const lines = wrapTitle(title, 13);
 
@@ -249,48 +250,62 @@ function render() {
 }
 
 // ─── Strand toggle buttons ────────────────────────────────────────────
-function updateButtons() {
-  const allOn = STRAND_ORDER.every(k => activeStrands.has(k));
-  document.getElementById("btn-all").classList.toggle("active-all", allOn);
+function buildButtons(data) {
+  const strands = data.progression_threads.strands;
+
+  function updateButtons() {
+    const allOn = STRAND_ORDER.every(k => activeStrands.has(k));
+    document.getElementById("btn-all").classList.toggle("active-all", allOn);
+    STRAND_ORDER.forEach(key => {
+      const btn = document.getElementById(`btn-${key}`);
+      if (btn) btn.classList.toggle(`active-${STRAND_CONFIG[key].cssKey}`, activeStrands.has(key));
+    });
+  }
+
+  const ctrl = document.getElementById("strand-controls");
+
+  const allBtn = document.createElement("button");
+  allBtn.id          = "btn-all";
+  allBtn.className   = "strand-btn active-all";
+  allBtn.textContent = "All";
+  allBtn.onclick = () => {
+    const allOn = STRAND_ORDER.every(k => activeStrands.has(k));
+    if (allOn) { activeStrands.clear(); }
+    else       { STRAND_ORDER.forEach(k => activeStrands.add(k)); }
+    updateButtons();
+    render(data);
+  };
+  ctrl.appendChild(allBtn);
+
+  const sep = document.createElement("span");
+  sep.style.cssText = "width:1px;background:#ddd;margin:0 4px;align-self:stretch;display:inline-block";
+  ctrl.appendChild(sep);
+
   STRAND_ORDER.forEach(key => {
-    const s   = DATA.strands[key];
-    const btn = document.getElementById(`btn-${key}`);
-    btn.classList.toggle(`active-${s.key}`, activeStrands.has(key));
+    if (!strands[key]) return;
+    const cfg = STRAND_CONFIG[key];
+    const btn = document.createElement("button");
+    btn.id          = `btn-${key}`;
+    btn.className   = `strand-btn active-${cfg.cssKey}`;
+    btn.textContent = strands[key].label;
+    btn.onclick = () => {
+      if (activeStrands.has(key)) { activeStrands.delete(key); }
+      else                        { activeStrands.add(key); }
+      updateButtons();
+      render(data);
+    };
+    ctrl.appendChild(btn);
   });
 }
 
-const ctrl = document.getElementById("strand-controls");
-
-const allBtn = document.createElement("button");
-allBtn.id          = "btn-all";
-allBtn.className   = "strand-btn active-all";
-allBtn.textContent = "All";
-allBtn.onclick = () => {
-  const allOn = STRAND_ORDER.every(k => activeStrands.has(k));
-  if (allOn) { activeStrands.clear(); }
-  else       { STRAND_ORDER.forEach(k => activeStrands.add(k)); }
-  updateButtons();
-  render();
-};
-ctrl.appendChild(allBtn);
-
-const sep = document.createElement("span");
-sep.style.cssText = "width:1px;background:#ddd;margin:0 4px;align-self:stretch;display:inline-block";
-ctrl.appendChild(sep);
-
-STRAND_ORDER.forEach(key => {
-  const s   = DATA.strands[key];
-  const btn = document.createElement("button");
-  btn.id          = `btn-${key}`;
-  btn.className   = `strand-btn active-${s.key}`;
-  btn.textContent = s.label;
-  btn.onclick = () => {
-    if (activeStrands.has(key)) { activeStrands.delete(key); }
-    else                        { activeStrands.add(key); }
-    updateButtons();
-    render();
-  };
-  ctrl.appendChild(btn);
-});
-
-render();
+// ─── Bootstrap: fetch JSON then initialise ───────────────────────────
+fetch('./science_y_goals_map.json')
+  .then(r => r.json())
+  .then(data => {
+    buildButtons(data);
+    render(data);
+  })
+  .catch(err => {
+    document.getElementById("tree-svg").innerHTML =
+      `<text x="20" y="40" font-size="13" fill="#c00">Failed to load data: ${err.message}</text>`;
+  });
