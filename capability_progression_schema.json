@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Capability Progression Map Schema",
+  "description": "Generic schema for capability progression maps across any subject. Covers strands where the same skill or process is practised at increasing sophistication over time — not concept dependency chains. Granularity varies by subject: year-by-year (e.g. Science H/I), band-level (e.g. DT Y7-8, Y9-10), or other. Sequences are linear and may skip levels where a capability is not explicitly addressed at that point.",
+  "type": "object",
+  "required": ["description", "subject", "levels", "capability_threads"],
+  "properties": {
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of what this file contains and what subject/context it covers."
+    },
+    "subject": {
+      "type": "string",
+      "description": "Subject this map belongs to. e.g. 'Science', 'Digital Technologies', 'English'"
+    },
+    "curriculum": {
+      "type": "string",
+      "description": "Curriculum framework this map is aligned to. e.g. 'ACARA v9', 'MYP'"
+    },
+    "levels": {
+      "type": "object",
+      "description": "Keyed by level identifier — year level string (e.g. '8') or band string (e.g. '7-8'). Contains standards/descriptors for that level. Only levels with explicit descriptors need entries.",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["label", "standards"],
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Human-readable label for this level. e.g. 'Year 8' or 'Years 7-8'"
+          },
+          "standards": {
+            "type": "array",
+            "description": "List of capability descriptors for this level.",
+            "items": {
+              "type": "object",
+              "required": ["code", "title", "description", "capability_goal"],
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "Descriptor code. e.g. 'AC9S8H01', 'AC9TDI8P01'. Must be unique across all levels."
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Short title for the descriptor."
+                },
+                "description": {
+                  "type": "string",
+                  "description": "Verbatim curriculum descriptor text."
+                },
+                "capability_goal": {
+                  "type": "string",
+                  "description": "Interpreted capability endpoint at this level — framed as 'Students...'. Describes what students can DO at this maturation level, not what they know. Derived from the descriptor and elaborations."
+                },
+                "sub_strand": {
+                  "type": "string",
+                  "description": "Sub-strand this descriptor belongs to. Free string — subject-specific. e.g. 'questioning', 'planning', 'nature_of_science', 'creating_solutions', 'investigating'. Used to group descriptors into capability threads."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "capability_threads": {
+      "type": "object",
+      "description": "Capability maturation chains organised by strand and sub-strand. Each thread is a linear sequence of descriptor codes ordered from earliest to latest level. No branching. Gaps in the sequence are valid — a sub-strand may not have an explicit descriptor at every level.",
+      "properties": {
+        "description": { "type": "string" },
+        "strands": {
+          "type": "object",
+          "description": "Keyed by strand identifier. e.g. 'human_endeavour', 'inquiry', 'design_process'.",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["label", "sub_strands"],
+            "properties": {
+              "label": {
+                "type": "string",
+                "description": "Human-readable strand name. e.g. 'Science as a Human Endeavour', 'Science Inquiry', 'Design Process'"
+              },
+              "sub_strands": {
+                "type": "object",
+                "description": "Keyed by sub-strand identifier. Each contains a linear sequence of codes.",
+                "additionalProperties": {
+                  "type": "object",
+                  "required": ["label", "sequence"],
+                  "properties": {
+                    "label": {
+                      "type": "string",
+                      "description": "Human-readable sub-strand name. e.g. 'Questioning and predicting', 'Nature and development of science', 'Generating and designing'"
+                    },
+                    "sequence": {
+                      "type": "array",
+                      "description": "Ordered list of descriptor codes from earliest to latest level. Linear, no branching. Gaps allowed — only include levels where the capability is explicitly addressed. The visualiser uses each code's level key to position it correctly regardless of sequence gaps.",
+                      "items": { "type": "string" },
+                      "minItems": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "_notes": {
+    "usage": "Used by the capability progression visualiser. Paired with a concept progression map (e.g. science_y_goals_map.json) for subjects that have both concept and capability strands. The two maps are complementary — one per mode.",
+    "progression_model": "Capability threads are maturation sequences, not dependency trees. The same skill (e.g. 'planning investigations') deepens each year/band. Visualise as horizontal swim lanes per sub-strand, one node per level, spaced by actual level position.",
+    "granularity": "Level keys are flexible. Science uses year-by-year ('7', '8', '9', '10'). DT uses bands ('7-8', '9-10'). Mixed granularity within a file is valid if the curriculum warrants it.",
+    "gaps": "A sequence does not need an entry at every level. If a sub-strand has no explicit descriptor at Y9 for example, simply omit it from the sequence. The visualiser spaces by level position, not sequence index.",
+    "naming_convention": "{subject_slug}_capability_map.json e.g. science_capability_map.json, dt_capability_map.json",
+    "schema_naming": "This schema file should be named capability_progression_schema.json and referenced by all subject capability maps."
+  }
+}

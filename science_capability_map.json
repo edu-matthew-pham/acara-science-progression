@@ -1,0 +1,512 @@
+{
+  "description": "Science capability progression map \u2014 Science as a Human Endeavour (H) and Science Inquiry (I) strands, Foundation\u2013Y10. Band-based: F, Y1-2, Y3-4, Y5-6, Y7-8, Y9-10. One canonical descriptor per band using the lower year code.",
+  "subject": "Science",
+  "curriculum": "ACARA v9",
+  "levels": {
+    "F": {
+      "label": "Foundation",
+      "standards": [
+        {
+          "code": "AC9SFH01",
+          "title": "People observe and question the world",
+          "description": "Explore the ways people make and use observations and questions to learn about the natural world",
+          "capability_goal": "Students explore how people use observations and questions to learn about the natural world.",
+          "sub_strand": "use_of_science"
+        },
+        {
+          "code": "AC9SFI01",
+          "title": "Pose simple questions from experience",
+          "description": "Pose questions and make predictions based on experiences",
+          "capability_goal": "Students pose simple questions and make predictions based on their experiences.",
+          "sub_strand": "questioning"
+        },
+        {
+          "code": "AC9SFI02",
+          "title": "Investigate safely using senses",
+          "description": "Engage in investigations safely and make observations using their senses",
+          "capability_goal": "Students engage safely in investigations and make observations using their senses.",
+          "sub_strand": "planning"
+        },
+        {
+          "code": "AC9SFI03",
+          "title": "Record observations in templates",
+          "description": "Represent observations in provided templates and identify patterns with guidance",
+          "capability_goal": "Students represent observations in provided templates and identify simple patterns with guidance.",
+          "sub_strand": "processing"
+        },
+        {
+          "code": "AC9SFI04",
+          "title": "Compare observations with predictions",
+          "description": "Compare observations with predictions with guidance",
+          "capability_goal": "Students compare observations with predictions with guidance.",
+          "sub_strand": "evaluating"
+        },
+        {
+          "code": "AC9SFI05",
+          "title": "Share questions and observations",
+          "description": "Share questions, predictions, observations and ideas with others",
+          "capability_goal": "Students share questions, predictions, observations and ideas with others.",
+          "sub_strand": "communicating"
+        }
+      ]
+    },
+    "1-2": {
+      "label": "Years 1-2",
+      "standards": [
+        {
+          "code": "AC9S1H01",
+          "title": "Describe science in daily life",
+          "description": "Describe how people use science in their daily lives, including using patterns to make scientific predictions",
+          "capability_goal": "Students describe how people use science in daily life, including using patterns to make scientific predictions.",
+          "sub_strand": "use_of_science"
+        },
+        {
+          "code": "AC9S1I01",
+          "title": "Pose questions about patterns",
+          "description": "Pose questions to explore observed simple patterns and relationships and make predictions based on experiences",
+          "capability_goal": "Students pose questions to explore simple patterns and relationships and make predictions based on experiences.",
+          "sub_strand": "questioning"
+        },
+        {
+          "code": "AC9S1I02",
+          "title": "Suggest safe procedures",
+          "description": "Suggest and follow safe procedures to investigate questions and test predictions",
+          "capability_goal": "Students suggest and follow safe procedures to investigate questions and test predictions.",
+          "sub_strand": "planning"
+        },
+        {
+          "code": "AC9S1I03",
+          "title": "Record with informal measurements",
+          "description": "Make and record observations, including informal measurements, using digital tools as appropriate",
+          "capability_goal": "Students make and record observations including informal measurements, using digital tools as appropriate.",
+          "sub_strand": "planning"
+        },
+        {
+          "code": "AC9S1I04",
+          "title": "Sort data and show patterns",
+          "description": "Sort and order data and information and represent patterns, including with provided tables and visual or physical models",
+          "capability_goal": "Students sort and order data and represent patterns using provided tables and visual or physical models.",
+          "sub_strand": "processing"
+        },
+        {
+          "code": "AC9S1I05",
+          "title": "Compare findings for fairness",
+          "description": "Compare observations with predictions and others' observations, consider if investigations are fair and identify further questions with guidance",
+          "capability_goal": "Students compare observations with predictions and others' observations, consider fairness of investigations and identify further questions with guidance.",
+          "sub_strand": "evaluating"
+        },
+        {
+          "code": "AC9S1I06",
+          "title": "Write observations and findings",
+          "description": "Write and create texts to communicate observations, findings and ideas, using everyday and scientific vocabulary",
+          "capability_goal": "Students write and create texts to communicate observations, findings and ideas using everyday and scientific vocabulary.",
+          "sub_strand": "communicating"
+        }
+      ]
+    },
+    "3-4": {
+      "label": "Years 3-4",
+      "standards": [
+        {
+          "code": "AC9S3H01",
+          "title": "Data builds scientific explanations",
+          "description": "Examine how people use data to develop scientific explanations",
+          "capability_goal": "Students examine how people use data to develop scientific explanations.",
+          "sub_strand": "nature_of_science"
+        },
+        {
+          "code": "AC9S3H02",
+          "title": "Science applied to solve problems",
+          "description": "Consider how people use scientific explanations to meet a need or solve a problem",
+          "capability_goal": "Students consider how people apply scientific explanations to meet needs and solve problems.",
+          "sub_strand": "use_of_science"
+        },
+        {
+          "code": "AC9S3I01",
+          "title": "Pose questions from observations",
+          "description": "Pose questions to explore observed patterns and relationships and make predictions based on observations",
+          "capability_goal": "Students pose questions to explore patterns and relationships and make predictions based on observations.",
+          "sub_strand": "questioning"
+        },
+        {
+          "code": "AC9S3I02",
+          "title": "Plan fair tests with scaffolds",
+          "description": "Use provided scaffolds to plan and conduct investigations to answer questions or test predictions, including identifying the elements of fair tests, and considering the safe use of materials and equipment",
+          "capability_goal": "Students use provided scaffolds to plan and conduct fair-test investigations, identifying key elements and considering safe equipment use.",
+          "sub_strand": "planning"
+        },
+        {
+          "code": "AC9S3I03",
+          "title": "Measure with scaled instruments",
+          "description": "Follow procedures to make and record observations, including making formal measurements using familiar scaled instruments and using digital tools as appropriate",
+          "capability_goal": "Students follow procedures to make and record formal measurements using scaled instruments.",
+          "sub_strand": "planning"
+        },
+        {
+          "code": "AC9S3I04",
+          "title": "Construct tables and graphs",
+          "description": "Construct and use representations, including tables, simple column graphs and visual or physical models, to organise data and information, show simple relationships and identify patterns",
+          "capability_goal": "Students construct and use tables, column graphs and models to organise data and identify patterns and simple relationships.",
+          "sub_strand": "processing"
+        },
+        {
+          "code": "AC9S3I05",
+          "title": "Compare findings and conclude",
+          "description": "Compare findings with those of others, consider if investigations were fair, identify questions for further investigation and draw conclusions",
+          "capability_goal": "Students compare findings with others, consider fairness of investigations, identify further questions and draw conclusions.",
+          "sub_strand": "evaluating"
+        },
+        {
+          "code": "AC9S3I06",
+          "title": "Write for purpose and audience",
+          "description": "Write and create texts to communicate findings and ideas for identified purposes and audiences, using scientific vocabulary and digital tools as appropriate",
+          "capability_goal": "Students write and create texts to communicate findings and ideas for identified purposes and audiences using scientific vocabulary.",
+          "sub_strand": "communicating"
+        }
+      ]
+    },
+    "5-6": {
+      "label": "Years 5-6",
+      "standards": [
+        {
+          "code": "AC9S5H01",
+          "title": "Collaboration drives advances",
+          "description": "Examine why advances in science are often the result of collaboration or build on the work of others",
+          "capability_goal": "Students examine why scientific advances often depend on collaboration and building on prior work.",
+          "sub_strand": "nature_of_science"
+        },
+        {
+          "code": "AC9S5H02",
+          "title": "Science in community decisions",
+          "description": "Investigate how scientific knowledge is used by individuals and communities to identify problems, consider responses and make decisions",
+          "capability_goal": "Students investigate how individuals and communities use scientific knowledge to identify problems, consider responses and make decisions.",
+          "sub_strand": "use_of_science"
+        },
+        {
+          "code": "AC9S5I01",
+          "title": "Pose questions and predict",
+          "description": "Pose investigable questions to identify patterns and test relationships and make reasoned predictions",
+          "capability_goal": "Students pose investigable questions to identify patterns and test relationships, making reasoned predictions.",
+          "sub_strand": "questioning"
+        },
+        {
+          "code": "AC9S5I02",
+          "title": "Plan repeatable investigations",
+          "description": "Plan and conduct repeatable investigations to answer questions, including, as appropriate, deciding the variables to be changed, measured and controlled in fair tests; describing potential risks; planning for the safe use of equipment and materials; and identifying required permissions to conduct investigations on Country/Place",
+          "capability_goal": "Students plan and conduct repeatable fair-test investigations, identifying variables, managing risks and planning for safe equipment use.",
+          "sub_strand": "planning"
+        },
+        {
+          "code": "AC9S5I03",
+          "title": "Measure and record with precision",
+          "description": "Use equipment to observe, measure and record data with reasonable precision, using digital tools as appropriate",
+          "capability_goal": "Students use equipment to observe, measure and record data with reasonable precision.",
+          "sub_strand": "planning"
+        },
+        {
+          "code": "AC9S5I04",
+          "title": "Build representations for trends",
+          "description": "Construct and use appropriate representations, including tables, graphs and visual or physical models, to organise and process data and information and describe patterns, trends and relationships",
+          "capability_goal": "Students construct and use tables, graphs and models to organise data and describe patterns, trends and relationships.",
+          "sub_strand": "processing"
+        },
+        {
+          "code": "AC9S5I05",
+          "title": "Identify errors and conclude",
+          "description": "Compare methods and findings with those of others, recognise possible sources of error, pose questions for further investigation and select evidence to draw reasoned conclusions",
+          "capability_goal": "Students compare methods and findings with others, recognise sources of error and select evidence to draw reasoned conclusions.",
+          "sub_strand": "evaluating"
+        },
+        {
+          "code": "AC9S5I06",
+          "title": "Write for specific audiences",
+          "description": "Write and create texts to communicate ideas and findings for specific purposes and audiences, including selection of language features, using digital tools as appropriate",
+          "capability_goal": "Students write and create texts to communicate ideas and findings for specific purposes and audiences.",
+          "sub_strand": "communicating"
+        }
+      ]
+    },
+    "7-8": {
+      "label": "Years 7-8",
+      "standards": [
+        {
+          "code": "AC9S7H01",
+          "title": "Evidence changes knowledge",
+          "description": "Explain how new evidence or different perspectives can lead to changes in scientific knowledge",
+          "capability_goal": "Students explain how new evidence or different perspectives can lead to changes in scientific knowledge.",
+          "sub_strand": "nature_of_science"
+        },
+        {
+          "code": "AC9S7H02",
+          "title": "Culture shapes scientific knowledge",
+          "description": "Investigate how cultural perspectives and world views influence the development of scientific knowledge",
+          "capability_goal": "Students investigate how cultural perspectives and world views influence the development of scientific knowledge.",
+          "sub_strand": "nature_of_science"
+        },
+        {
+          "code": "AC9S7H03",
+          "title": "Science responses impact society",
+          "description": "Examine how proposed scientific responses to contemporary issues may impact on society and explore ethical, environmental, social and economic considerations",
+          "capability_goal": "Students examine how scientific responses to contemporary issues may impact society and involve ethical, environmental, social and economic considerations.",
+          "sub_strand": "use_of_science"
+        },
+        {
+          "code": "AC9S7H04",
+          "title": "Science communication shapes policy",
+          "description": "Explore the role of science communication in informing individual viewpoints and community policies and regulations",
+          "capability_goal": "Students explore how science communication informs individual viewpoints and shapes community policies and regulations.",
+          "sub_strand": "use_of_science"
+        },
+        {
+          "code": "AC9S7I01",
+          "title": "Explore models and test relationships",
+          "description": "Develop investigable questions, reasoned predictions and hypotheses to explore scientific models, identify patterns and test relationships",
+          "capability_goal": "Students develop investigable questions, reasoned predictions and hypotheses to explore models, identify patterns and test relationships.",
+          "sub_strand": "questioning"
+        },
+        {
+          "code": "AC9S7I02",
+          "title": "Plan reproducible investigations",
+          "description": "Plan and conduct reproducible investigations to answer questions and test hypotheses, including identifying variables and assumptions and, as appropriate, recognising and managing risks, considering ethical issues and recognising key considerations regarding heritage sites and artefacts on Country/Place",
+          "capability_goal": "Students plan and conduct reproducible investigations, identifying variables and assumptions and managing risks and ethical considerations.",
+          "sub_strand": "planning"
+        },
+        {
+          "code": "AC9S7I03",
+          "title": "Select equipment for precision",
+          "description": "Select and use equipment to generate and record data with precision, using digital tools as appropriate",
+          "capability_goal": "Students select and use equipment to generate and record data with precision.",
+          "sub_strand": "planning"
+        },
+        {
+          "code": "AC9S7I04",
+          "title": "Select tables, graphs and models",
+          "description": "Select and construct appropriate representations, including tables, graphs, models and mathematical relationships, to organise and process data and information",
+          "capability_goal": "Students select and construct appropriate representations including tables, graphs, models and mathematical relationships to organise and process data.",
+          "sub_strand": "processing"
+        },
+        {
+          "code": "AC9S7I05",
+          "title": "Describe patterns and anomalies",
+          "description": "Analyse data and information to describe patterns, trends and relationships and identify anomalies",
+          "capability_goal": "Students analyse data and information to describe patterns, trends and relationships and identify anomalies.",
+          "sub_strand": "processing"
+        },
+        {
+          "code": "AC9S7I06",
+          "title": "Analyse methods and claims",
+          "description": "Analyse methods, conclusions and claims for assumptions, possible sources of error, conflicting evidence and unanswered questions",
+          "capability_goal": "Students analyse methods, conclusions and claims for assumptions, sources of error, conflicting evidence and unanswered questions.",
+          "sub_strand": "evaluating"
+        },
+        {
+          "code": "AC9S7I07",
+          "title": "Construct evidence-based arguments",
+          "description": "Construct evidence-based arguments to support conclusions or evaluate claims and consider any ethical issues and cultural protocols associated with using or citing secondary data or information",
+          "capability_goal": "Students construct evidence-based arguments to support conclusions or evaluate claims, considering ethical issues and cultural protocols around secondary data.",
+          "sub_strand": "evaluating"
+        },
+        {
+          "code": "AC9S7I08",
+          "title": "Communicate ideas and arguments",
+          "description": "Write and create texts to communicate ideas, findings and arguments for specific purposes and audiences, including selection of appropriate language and text features, using digital tools as appropriate",
+          "capability_goal": "Students write and create texts to communicate ideas, findings and arguments for specific purposes and audiences, selecting appropriate language and text features.",
+          "sub_strand": "communicating"
+        }
+      ]
+    },
+    "9-10": {
+      "label": "Years 9-10",
+      "standards": [
+        {
+          "code": "AC9S9H01",
+          "title": "Peer review validates knowledge",
+          "description": "Explain how scientific knowledge is validated and refined, including the role of publication and peer review",
+          "capability_goal": "Students explain how publication and peer review validate and refine scientific knowledge.",
+          "sub_strand": "nature_of_science"
+        },
+        {
+          "code": "AC9S9H02",
+          "title": "Science and technology advance together",
+          "description": "Investigate how advances in technologies enable advances in science, and how science has contributed to developments in technologies and engineering",
+          "capability_goal": "Students investigate the reciprocal relationship between advances in science and advances in technologies and engineering.",
+          "sub_strand": "nature_of_science"
+        },
+        {
+          "code": "AC9S9H03",
+          "title": "Analyse science adoption factors",
+          "description": "Analyse the key factors that contribute to science knowledge and practices being adopted more broadly by society",
+          "capability_goal": "Students analyse the factors that determine whether scientific knowledge and practices are adopted by society.",
+          "sub_strand": "use_of_science"
+        },
+        {
+          "code": "AC9S9H04",
+          "title": "Society shapes research focus",
+          "description": "Examine how the values and needs of society influence the focus of scientific research",
+          "capability_goal": "Students examine how societal values and needs shape the direction and priorities of scientific research.",
+          "sub_strand": "use_of_science"
+        },
+        {
+          "code": "AC9S9I01",
+          "title": "Test relationships and develop models",
+          "description": "Develop investigable questions, reasoned predictions and hypotheses to test relationships and develop explanatory models",
+          "capability_goal": "Students develop investigable questions, predictions and hypotheses to test relationships and build explanatory models.",
+          "sub_strand": "questioning"
+        },
+        {
+          "code": "AC9S9I02",
+          "title": "Plan valid investigations, control error",
+          "description": "Plan and conduct valid, reproducible investigations to answer questions and test hypotheses, including identifying and controlling for possible sources of error and, as appropriate, developing and following risk assessments, considering ethical issues, and addressing key considerations regarding heritage sites and artefacts on Country/Place",
+          "capability_goal": "Students plan and conduct valid, reproducible investigations, identifying and controlling sources of error and addressing risk, ethical and cultural considerations.",
+          "sub_strand": "planning"
+        },
+        {
+          "code": "AC9S9I03",
+          "title": "Obtain replicable data at sample scale",
+          "description": "Select and use equipment to generate and record data with precision to obtain useful sample sizes and replicable data, using digital tools as appropriate",
+          "capability_goal": "Students select and use equipment to generate precise, replicable data with appropriate sample sizes.",
+          "sub_strand": "planning"
+        },
+        {
+          "code": "AC9S9I04",
+          "title": "Include descriptive statistics",
+          "description": "Select and construct appropriate representations, including tables, graphs, descriptive statistics, models and mathematical relationships, to organise and process data and information",
+          "capability_goal": "Students select and construct representations including descriptive statistics, models and mathematical relationships to organise and process data.",
+          "sub_strand": "processing"
+        },
+        {
+          "code": "AC9S9I05",
+          "title": "Connect data to explain patterns",
+          "description": "Analyse and connect a variety of data and information to identify and explain patterns, trends, relationships and anomalies",
+          "capability_goal": "Students analyse and connect varied data and information to identify and explain patterns, trends, relationships and anomalies.",
+          "sub_strand": "processing"
+        },
+        {
+          "code": "AC9S9I06",
+          "title": "Assess validity and reproducibility",
+          "description": "Assess the validity and reproducibility of methods and evaluate the validity of conclusions and claims, including by identifying assumptions, conflicting evidence and areas of uncertainty",
+          "capability_goal": "Students assess the validity and reproducibility of methods and evaluate conclusions and claims, identifying assumptions, conflicting evidence and uncertainty.",
+          "sub_strand": "evaluating"
+        },
+        {
+          "code": "AC9S9I07",
+          "title": "Argue from a variety of evidence",
+          "description": "Construct arguments based on analysis of a variety of evidence to support conclusions or evaluate claims, and consider any ethical issues and cultural protocols associated with accessing, using or citing secondary data or information",
+          "capability_goal": "Students construct arguments from varied evidence to support conclusions or evaluate claims, considering ethical and cultural protocols around data.",
+          "sub_strand": "evaluating"
+        },
+        {
+          "code": "AC9S9I08",
+          "title": "Communicate effectively for audience",
+          "description": "Write and create texts to communicate ideas, findings and arguments effectively for identified purposes and audiences, including selection of appropriate content, language and text features, using digital tools as appropriate",
+          "capability_goal": "Students write and create texts to communicate ideas, findings and arguments effectively, selecting appropriate content, language and text features for identified purposes and audiences.",
+          "sub_strand": "communicating"
+        }
+      ]
+    }
+  },
+  "capability_threads": {
+    "description": "Linear maturation sequences per sub-strand. Each sequence is ordered earliest to latest. Gaps are valid where a sub-strand has no explicit descriptor at a given level.",
+    "strands": {
+      "human_endeavour": {
+        "label": "Science as a Human Endeavour",
+        "sub_strands": {
+          "nature_of_science": {
+            "label": "Nature and development of science",
+            "sequence": [
+              "AC9S3H01",
+              "AC9S5H01",
+              "AC9S7H01",
+              "AC9S9H01"
+            ],
+            "short_label": "Nature of science",
+            "color": "#7C5CBF"
+          },
+          "use_of_science": {
+            "label": "Use and influence of science",
+            "sequence": [
+              "AC9SFH01",
+              "AC9S1H01",
+              "AC9S3H02",
+              "AC9S5H02",
+              "AC9S7H03",
+              "AC9S9H03"
+            ],
+            "short_label": "Use of science",
+            "color": "#C2185B"
+          }
+        }
+      },
+      "inquiry": {
+        "label": "Science Inquiry",
+        "sub_strands": {
+          "questioning": {
+            "label": "Questioning and predicting",
+            "sequence": [
+              "AC9SFI01",
+              "AC9S1I01",
+              "AC9S3I01",
+              "AC9S5I01",
+              "AC9S7I01",
+              "AC9S9I01"
+            ],
+            "short_label": "Questioning",
+            "color": "#2A8FA8"
+          },
+          "planning": {
+            "label": "Planning and conducting",
+            "sequence": [
+              "AC9SFI02",
+              "AC9S1I02",
+              "AC9S3I02",
+              "AC9S5I02",
+              "AC9S7I02",
+              "AC9S9I02"
+            ],
+            "short_label": "Planning",
+            "color": "#2563A8"
+          },
+          "processing": {
+            "label": "Processing, modelling and analysing",
+            "sequence": [
+              "AC9SFI03",
+              "AC9S1I04",
+              "AC9S3I04",
+              "AC9S5I04",
+              "AC9S7I04",
+              "AC9S9I04"
+            ],
+            "short_label": "Processing",
+            "color": "#1E7A6A"
+          },
+          "evaluating": {
+            "label": "Evaluating",
+            "sequence": [
+              "AC9SFI04",
+              "AC9S1I05",
+              "AC9S3I05",
+              "AC9S5I05",
+              "AC9S7I06",
+              "AC9S9I06"
+            ],
+            "short_label": "Evaluating",
+            "color": "#3A7DBF"
+          },
+          "communicating": {
+            "label": "Communicating",
+            "sequence": [
+              "AC9SFI05",
+              "AC9S1I06",
+              "AC9S3I06",
+              "AC9S5I06",
+              "AC9S7I08",
+              "AC9S9I08"
+            ],
+            "short_label": "Communicating",
+            "color": "#1A9E8A"
+          }
+        }
+      }
+    }
+  }
+}
