@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science Y-Goals Progression Map</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, sans-serif; background: #f8f8f6; color: #2c2c2a; }
+  h1 { font-size: 18px; font-weight: 500; padding: 20px 24px 4px; }
+  .subtitle { font-size: 13px; color: #888; padding: 0 24px 16px; }
+
+  .controls { display: flex; gap: 8px; flex-wrap: wrap; padding: 0 24px 16px; }
+  .strand-btn {
+    font-size: 12px; padding: 5px 14px; border-radius: 20px;
+    border: 1px solid #ccc; background: #fff;
+    color: #555; cursor: pointer; transition: all .15s;
+  }
+  .strand-btn.active { color: #fff; border-color: transparent; font-weight: 500; }
+  .strand-btn.active.bio   { background: #1D9E75; }
+  .strand-btn.active.earth { background: #378ADD; }
+  .strand-btn.active.phys  { background: #BA7517; }
+  .strand-btn.active.chem  { background: #D85A30; }
+
+  #tree-wrap { overflow-x: auto; padding: 0 24px 32px; }
+  svg { display: block; }
+
+  #tooltip {
+    position: fixed; pointer-events: none; opacity: 0; transition: opacity .15s;
+    background: #fff; border: 1px solid #ddd; border-radius: 10px;
+    padding: 12px 14px; max-width: 300px; z-index: 999;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+  #tooltip.show { opacity: 1; }
+  #tt-code  { font-size: 11px; color: #999; margin-bottom: 3px; }
+  #tt-title { font-size: 13px; font-weight: 600; color: #222; margin-bottom: 6px; }
+  #tt-goal  { font-size: 12px; color: #555; line-height: 1.55; }
+</style>
+</head>
+<body>
+
+<h1>Science Y-Goals Progression Map</h1>
+<p class="subtitle">Hover a node to see the Y-goal. Filter by strand.</p>
+<div class="controls" id="strand-controls"></div>
+<div id="tree-wrap"><svg id="tree-svg"></svg></div>
+
+<div id="tooltip">
+  <div id="tt-code"></div>
+  <div id="tt-title"></div>
+  <div id="tt-goal"></div>
+</div>
+
+<!-- Data first, then render logic -->
+<script src="data.js"></script>
+<script src="render.js"></script>
+
+</body>
+</html>
