@@ -12,6 +12,7 @@
 //   goalField:    "y_goal",                        // field name for tooltip goal text
 //   svgId:        "tree-svg-concepts",
 //   controlsId:   "strand-controls-concepts",
+//   rowsPerStrand: 2,  // optional, default 2. Set to 4 for dense strands like Maths.
 // }
 
 (function () {
@@ -22,7 +23,7 @@
   const COL_W           = CFG.colWidth || 130;
   const ROW_H           = 72;
   const STRAND_GAP      = 24;
-  const ROWS_PER_STRAND = 2;
+  const ROWS_PER_STRAND = CFG.rowsPerStrand || 2;
   const BAND_H          = ROWS_PER_STRAND * ROW_H;
   const HEADER_H        = 48;
   const START_X         = 110;
