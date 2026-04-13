@@ -214,6 +214,7 @@
         g.addEventListener("mouseenter", e => showTip(e, code, meta, color));
         g.addEventListener("mousemove", moveTip);
         g.addEventListener("mouseleave", hideTip);
+        g.addEventListener("click", () => window.showWidthPanel && window.showWidthPanel(code, meta, color));
       });
     });
   }

@@ -31,7 +31,22 @@
   .strand-btn.active-chem  { background: #D85A30; color: #fff; border-color: transparent; font-weight: 500; }
   .panel { display: none; }
   .panel.active { display: block; }
-  #tree-wrap { overflow-x: auto; padding: 0 24px 32px; }
+
+  /* Scroll containers — shrink when width panel is open */
+  #tree-wrap,
+  #tree-wrap-capabilities {
+    overflow-x: auto;
+    padding: 0 24px 32px;
+    width: 100%;
+    transition: width 0.25s ease;
+    background: #fff;
+  }
+
+  body.width-panel-open #tree-wrap,
+  body.width-panel-open #tree-wrap-capabilities {
+    width: calc(100% - 356px);
+  }
+
   svg { display: block; }
   #tooltip {
     position: fixed; pointer-events: none; opacity: 0; transition: opacity .15s;
@@ -64,7 +79,7 @@
 
 <div class="panel" id="panel-capabilities">
   <div class="controls" id="strand-controls-capabilities"></div>
-  <div style="overflow-x:auto; padding: 0 24px 32px;">
+  <div id="tree-wrap-capabilities">
     <svg id="tree-svg-capabilities"></svg>
   </div>
 </div>
@@ -83,7 +98,6 @@ function switchTab(mode) {
   document.getElementById('panel-' + mode).classList.add('active');
 }
 
-// Config for generic concepts renderer
 window.CONCEPTS_CONFIG = {
   dataUrl:    './science_y_goals_map.json',
   levelOrder: ["F","1","2","3","4","5","6","7","8","9","10"],
@@ -103,7 +117,6 @@ window.CONCEPTS_CONFIG = {
   controlsId:  "strand-controls-concepts"
 };
 
-// Config for generic capabilities renderer
 window.CAPABILITIES_CONFIG = {
   dataUrl:    './science_capability_map.json',
   bandOrder:  ["F", "1-2", "3-4", "5-6", "7-8", "9-10"],
@@ -117,10 +130,15 @@ window.CAPABILITIES_CONFIG = {
   svgId:       "tree-svg-capabilities",
   controlsId:  "strand-controls-capabilities"
 };
+
+window.WIDTH_CONFIG = {
+  files: ['./science_y7_width_tiers.json']
+};
 </script>
 
 <script src="render-concepts.js"></script>
 <script src="render-capabilities.js"></script>
+<script src="render-width.js"></script>
 
 </body>
 </html>
