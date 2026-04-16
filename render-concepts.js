@@ -42,6 +42,58 @@
   LEVEL_ORDER.forEach((l, i) => { LEVEL_X[l] = START_X + i * COL_W; });
   const SVG_W = START_X + LEVEL_ORDER.length * COL_W + 20;
 
+  // --- Ancestry / descendant helpers ---
+
+  // Build a parent lookup: code → Set of parent codes
+  function buildParentMap(strands) {
+    const parents = {};
+    function walk(node, parentCode) {
+      if (!parents[node.code]) parents[node.code] = new Set();
+      if (parentCode) parents[node.code].add(parentCode);
+      node.children.forEach(c => walk(c, node.code));
+    }
+    Object.values(strands).forEach(strand => {
+      if (strand.tree) strand.tree.forEach(root => walk(root, null));
+    });
+    return parents;
+  }
+
+  // Collect all ancestors of a code (walk up via parent map)
+  function getAncestors(code, parentMap) {
+    const ancestors = new Set();
+    const queue = [code];
+    while (queue.length) {
+      const c = queue.shift();
+      const ps = parentMap[c];
+      if (ps) ps.forEach(p => {
+        if (!ancestors.has(p)) { ancestors.add(p); queue.push(p); }
+      });
+    }
+    return ancestors;
+  }
+
+  // Collect all descendants of a code (walk down the tree)
+  function getDescendants(code, strands) {
+    const descendants = new Set();
+    function findAndCollect(node) {
+      if (node.code === code) {
+        // Found — collect all children recursively
+        function collectAll(n) {
+          n.children.forEach(c => { descendants.add(c.code); collectAll(c); });
+        }
+        collectAll(node);
+        return true;
+      }
+      return node.children.some(c => findAndCollect(c));
+    }
+    Object.values(strands).forEach(strand => {
+      if (strand.tree) strand.tree.forEach(root => findAndCollect(root));
+    });
+    return descendants;
+  }
+
+  // --- End ancestry helpers ---
+
   function getMeta(code, yearLevels) {
     for (const lvl of Object.values(yearLevels)) {
       const std = lvl.standards.find(s => s.code === code);
@@ -103,9 +155,18 @@
 
   const activeStrands = new Set(STRAND_ORDER);
 
+  // --- Selection state ---
+  let selectedCode = null;
+  let highlightedCodes = new Set(); // selected + ancestors + descendants
+  let parentMap = {};
+  let _nodeClickedThisFrame = false; // Guard: prevents document click from undoing a node click
+
   function render(data) {
     const yearLevels = data.year_levels;
     const strands    = data.progression_threads.strands;
+
+    // Build parent map once (stable across renders unless data changes)
+    parentMap = buildParentMap(strands);
 
     const strandBandY = {};
     let y = HEADER_H;
@@ -144,6 +205,9 @@
         fill: hasNodes?"#444":"#ccc", "font-family":"system-ui,sans-serif" }, svg);
       lbl.textContent = LEVEL_LABELS[lk] || lk;
     });
+
+    // Determine if we are in highlight mode
+    const highlighting = selectedCode !== null && highlightedCodes.size > 0;
 
     // Strands
     STRAND_ORDER.forEach(key => {
@@ -191,8 +255,11 @@
       // Edges
       edges.forEach(([from, to]) => {
         const a = nodePos[from], b = nodePos[to]; if (!a || !b) return;
+        const edgeHighlighted = highlighting && highlightedCodes.has(from) && highlightedCodes.has(to);
+        const edgeOpacity = highlighting ? (edgeHighlighted ? "0.8" : "0.2") : "0.5";
+        const edgeWidth = edgeHighlighted ? "2.5" : "1.5";
         svgEl("path", { d:elbowPath(a.x,a.y,b.x,b.y), fill:"none",
-          stroke:color, "stroke-width":"1.5", opacity:"0.5" }, svg);
+          stroke:color, "stroke-width":edgeWidth, opacity:edgeOpacity }, svg);
       });
 
       // Nodes
@@ -200,10 +267,23 @@
         const pos = nodePos[code]; if (!pos) return;
         const meta = getMeta(code, yearLevels);
         const lines = wrapTitle(meta ? meta.title : code, 13);
-        const g = svgEl("g", { style:"cursor:pointer" }, svg);
+        const isHighlighted = !highlighting || highlightedCodes.has(code);
+        const isSelected = code === selectedCode;
+        const nodeOpacity = isHighlighted ? 1 : 0.3;
+
+        const g = svgEl("g", { style:"cursor:pointer", opacity: nodeOpacity }, svg);
         const rx = pos.x - NODE_W/2, ry = pos.y - NODE_H/2;
+
+        // Drop shadow
         svgEl("rect", { x:rx+2, y:ry+2, width:NODE_W, height:NODE_H, rx:"10", fill:"rgba(0,0,0,0.07)" }, g);
-        svgEl("rect", { x:rx, y:ry, width:NODE_W, height:NODE_H, rx:"10", fill:color, stroke:"#fff", "stroke-width":"2" }, g);
+
+        // Node rect — selected node gets a white stroke ring
+        const strokeColor = isSelected ? "#222" : "#fff";
+        const strokeWidth = isSelected ? "3" : "2";
+        svgEl("rect", { x:rx, y:ry, width:NODE_W, height:NODE_H, rx:"10",
+          fill:color, stroke:strokeColor, "stroke-width":strokeWidth }, g);
+
+        // Text
         const lH=13, tH=lines.length*lH, sY=pos.y-tH/2+lH/2;
         lines.forEach((line, i) => {
           const t = svgEl("text", { x:pos.x, y:sY+i*lH, "text-anchor":"middle",
@@ -211,10 +291,42 @@
             fill:"#fff", "font-family":"system-ui,sans-serif" }, g);
           t.textContent = line;
         });
+
         g.addEventListener("mouseenter", e => showTip(e, code, meta, color));
         g.addEventListener("mousemove", moveTip);
         g.addEventListener("mouseleave", hideTip);
-        g.addEventListener("click", () => window.showWidthPanel && window.showWidthPanel(code, meta, color));
+        g.addEventListener("click", (e) => {
+          e.stopPropagation(); // Prevent document click listener from firing
+          // Toggle selection
+          if (selectedCode === code) {
+            // Deselect
+            selectedCode = null;
+            highlightedCodes.clear();
+          } else {
+            // Select — compute ancestors + descendants
+            selectedCode = code;
+            const ancestors = getAncestors(code, parentMap);
+            const descendants = getDescendants(code, strands);
+            highlightedCodes = new Set([code, ...ancestors, ...descendants]);
+          }
+
+          // Re-render to apply highlight state
+          render(data);
+
+          // Also open width panel if available
+          if (selectedCode && window.showWidthPanel) {
+            const clickedMeta = getMeta(selectedCode, yearLevels);
+            const clickedStrandKey = STRAND_ORDER.find(k => {
+              if (!strands[k]) return false;
+              const codes = new Set();
+              function w(n) { codes.add(n.code); n.children.forEach(w); }
+              strands[k].tree.forEach(w);
+              return codes.has(selectedCode);
+            });
+            const clickedColor = clickedStrandKey ? STRAND_CONFIG[clickedStrandKey].color : "#888";
+            window.showWidthPanel(selectedCode, clickedMeta, clickedColor);
+          }
+        });
       });
     });
   }
@@ -237,6 +349,7 @@
     allBtn.onclick = () => {
       const allOn = STRAND_ORDER.every(k => activeStrands.has(k));
       if (allOn) activeStrands.clear(); else STRAND_ORDER.forEach(k => activeStrands.add(k));
+      selectedCode = null; highlightedCodes.clear(); // Clear selection on strand toggle
       updateButtons(); render(data);
     };
     ctrl.appendChild(allBtn);
@@ -253,15 +366,37 @@
       btn.textContent = strands[key].label;
       btn.onclick = () => {
         if (activeStrands.has(key)) activeStrands.delete(key); else activeStrands.add(key);
+        selectedCode = null; highlightedCodes.clear(); // Clear selection on strand toggle
         updateButtons(); render(data);
       };
       ctrl.appendChild(btn);
     });
   }
 
+  let _data = null; // Store ref for click-outside re-render
+
   fetch(DATA_URL)
     .then(r => r.json())
-    .then(data => { buildButtons(data); render(data); })
+    .then(data => {
+      _data = data;
+      buildButtons(data);
+      render(data);
+
+      // Click anywhere outside a node to deselect
+      document.addEventListener("click", (e) => {
+        if (!selectedCode) return;
+        // If click was inside the width panel, ignore
+        if (e.target.closest("#width-panel")) return;
+        // If click was on a strand filter button, ignore (handled by button onclick)
+        if (e.target.closest("#" + CTRL_ID)) return;
+        // If click was on a tab button, ignore
+        if (e.target.closest(".tabs")) return;
+
+        selectedCode = null;
+        highlightedCodes.clear();
+        render(_data);
+      });
+    })
     .catch(err => {
       document.getElementById(SVG_ID).innerHTML =
         `<text x="20" y="40" font-size="13" fill="#c00">Failed to load data: ${err.message}</text>`;

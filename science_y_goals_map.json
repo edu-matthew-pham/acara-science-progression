@@ -1,6 +1,216 @@
 {
   "description": "Science Y-goals progression map \u2014 descriptor codes, ACARA descriptions and Y-goals by year level. Used for prior knowledge lookups across the progression chain.",
   "year_levels": {
+    "F": {
+      "subject": "Science",
+      "standards": [
+        {
+          "code": "AC9SFU01",
+          "title": "Features of Plants and Animals",
+          "description": "Observe external features of plants and animals and describe ways they can be grouped based on these features",
+          "y_goal": "Students observe external features of plants and animals and group them based on those features",
+          "level_key": "F"
+        },
+        {
+          "code": "AC9SFU02",
+          "title": "How Objects Move",
+          "description": "Describe how objects move and how factors including their size, shape or material influence their movement",
+          "y_goal": "Students describe how objects move and explain how size, shape and material influence movement",
+          "level_key": "F"
+        },
+        {
+          "code": "AC9SFU03",
+          "title": "Materials and Their Properties",
+          "description": "Recognise that objects can be composed of different materials and describe the observable properties of those materials",
+          "y_goal": "Students recognise that objects are made of materials and describe the observable properties of those materials",
+          "level_key": "F"
+        }
+      ]
+    },
+    "1": {
+      "subject": "Science",
+      "standards": [
+        {
+          "code": "AC9S1U01",
+          "title": "Basic Needs of Living Things",
+          "description": "Identify the basic needs of plants and animals, including air, water, food or shelter, and describe how the places they live meet those needs",
+          "y_goal": "Students identify the basic needs of plants and animals and describe how their habitat meets those needs",
+          "level_key": "1"
+        },
+        {
+          "code": "AC9S1U02",
+          "title": "Daily and Seasonal Changes",
+          "description": "Describe daily and seasonal changes in the environment and explore how these changes affect everyday life",
+          "y_goal": "Students describe daily and seasonal environmental changes and explain how these affect everyday life",
+          "level_key": "1"
+        },
+        {
+          "code": "AC9S1U03",
+          "title": "Pushes and Pulls",
+          "description": "Describe pushes and pulls in terms of strength and direction and predict the effect of these forces on objects' motion and shape",
+          "y_goal": "Students describe pushes and pulls in terms of strength and direction and predict their effects on motion and shape",
+          "level_key": "1"
+        }
+      ]
+    },
+    "2": {
+      "subject": "Science",
+      "standards": [
+        {
+          "code": "AC9S2U01",
+          "title": "Earth in the Solar System",
+          "description": "Recognise Earth is a planet in the solar system and identify patterns in the changing position of the sun, moon, planets and stars in the sky",
+          "y_goal": "Students recognise Earth as a planet and identify patterns in the changing positions of the sun, moon, planets and stars",
+          "level_key": "2"
+        },
+        {
+          "code": "AC9S2U02",
+          "title": "Sound and Vibration",
+          "description": "Explore different actions to make sounds and how to make a variety of sounds, and recognise that sound energy causes objects to vibrate",
+          "y_goal": "Students explain that sound is produced by different actions and that sound energy causes objects to vibrate",
+          "level_key": "2"
+        },
+        {
+          "code": "AC9S2U03",
+          "title": "Physical Changes to Materials",
+          "description": "Recognise that materials can be changed physically without changing their material composition and explore the effect of different actions on materials including bending, twisting, stretching and breaking into smaller pieces",
+          "y_goal": "Students recognise that physical actions change the shape of materials without changing their composition",
+          "level_key": "2"
+        }
+      ]
+    },
+    "3": {
+      "subject": "Science",
+      "standards": [
+        {
+          "code": "AC9S3U01",
+          "title": "Living and Non-living Things",
+          "description": "Compare characteristics of living and non-living things and examine the differences between the life cycles of plants and animals",
+          "y_goal": "Students compare characteristics of living and non-living things and explain differences between plant and animal life cycles",
+          "level_key": "3"
+        },
+        {
+          "code": "AC9S3U02",
+          "title": "Soils, Rocks and Minerals",
+          "description": "Compare the observable properties of soils, rocks and minerals and investigate why they are important Earth resources",
+          "y_goal": "Students compare observable properties of soils, rocks and minerals and explain their importance as Earth resources",
+          "level_key": "3"
+        },
+        {
+          "code": "AC9S3U03",
+          "title": "Heat Energy and Temperature",
+          "description": "Identify sources of heat energy and examine how temperature changes when heat energy is transferred from one object to another",
+          "y_goal": "Students identify heat energy sources and explain how temperature changes when heat energy transfers between objects",
+          "level_key": "3"
+        },
+        {
+          "code": "AC9S3U04",
+          "title": "States of Matter and Heat",
+          "description": "Investigate the observable properties of solids and liquids and how adding or removing heat energy leads to a change of state",
+          "y_goal": "Students describe observable properties of solids and liquids and explain how adding or removing heat energy causes changes of state",
+          "level_key": "3"
+        }
+      ]
+    },
+    "4": {
+      "subject": "Science",
+      "standards": [
+        {
+          "code": "AC9S4U01",
+          "title": "Food Chains and Habitats",
+          "description": "Explain the roles and interactions of consumers, producers and decomposers within a habitat and how food chains represent feeding relationships",
+          "y_goal": "Students explain the roles of consumers, producers and decomposers in a habitat and represent feeding relationships using food chains",
+          "level_key": "4"
+        },
+        {
+          "code": "AC9S4U02",
+          "title": "Water Cycle",
+          "description": "Identify sources of water and describe key processes in the water cycle, including movement of water through the sky, landscape and ocean; precipitation; evaporation; and condensation",
+          "y_goal": "Students describe the key processes of the water cycle including precipitation, evaporation and condensation and trace the movement of water through sky, landscape and ocean",
+          "level_key": "4"
+        },
+        {
+          "code": "AC9S4U03",
+          "title": "Forces and Motion",
+          "description": "Identify how forces can be exerted by one object on another and investigate the effect of frictional, gravitational and magnetic forces on the motion of objects",
+          "y_goal": "Students identify how frictional, gravitational and magnetic forces are exerted between objects and describe their effects on motion",
+          "level_key": "4"
+        },
+        {
+          "code": "AC9S4U04",
+          "title": "Properties of Materials",
+          "description": "Examine the properties of natural and made materials including fibres, metals, glass and plastics and consider how these properties influence their use",
+          "y_goal": "Students explain how the properties of natural and made materials determine their suitability for different uses",
+          "level_key": "4"
+        }
+      ]
+    },
+    "5": {
+      "subject": "Science",
+      "standards": [
+        {
+          "code": "AC9S5U01",
+          "title": "Structural Features and Survival",
+          "description": "Examine how particular structural features and behaviours of living things enable their survival in specific habitats",
+          "y_goal": "Students explain how specific structural features and behaviours of living things are adaptations that enable survival in particular habitats",
+          "level_key": "5"
+        },
+        {
+          "code": "AC9S5U02",
+          "title": "Earth Surface Changes",
+          "description": "Describe how weathering, erosion, transportation and deposition cause slow or rapid change to Earth's surface",
+          "y_goal": "Students describe how weathering, erosion, transportation and deposition change Earth's surface over slow and rapid timescales",
+          "level_key": "5"
+        },
+        {
+          "code": "AC9S5U03",
+          "title": "Light and Shadows",
+          "description": "Identify sources of light, recognise that light travels in a straight path and describe how shadows are formed and light can be reflected and refracted",
+          "y_goal": "Students explain that light travels in straight paths from sources and describe how shadows, reflection and refraction result from this",
+          "level_key": "5"
+        },
+        {
+          "code": "AC9S5U04",
+          "title": "Particle Model of Matter",
+          "description": "Explain observable properties of solids, liquids and gases by modelling the motion and arrangement of particles",
+          "y_goal": "Students use a particle model to explain the observable properties of solids, liquids and gases in terms of particle motion and arrangement",
+          "level_key": "5"
+        }
+      ]
+    },
+    "6": {
+      "subject": "Science",
+      "standards": [
+        {
+          "code": "AC9S6U01",
+          "title": "Habitats and Living Things",
+          "description": "Investigate the physical conditions of a habitat and analyse how the growth and survival of living things is affected by changing physical conditions",
+          "y_goal": "Students analyse how physical conditions of a habitat affect the growth and survival of living things, and explain the relationship between changing conditions and organism responses",
+          "level_key": "6"
+        },
+        {
+          "code": "AC9S6U02",
+          "title": "Earth, Planets and Cyclic Phenomena",
+          "description": "Describe the movement of Earth and other planets relative to the sun and model how Earth's tilt, rotation on its axis and revolution around the sun relate to cyclic observable phenomena, including variable day and night length",
+          "y_goal": "Students model and explain how Earth's tilt, rotation and revolution produce cyclic observable phenomena including variable day and night length",
+          "level_key": "6"
+        },
+        {
+          "code": "AC9S6U03",
+          "title": "Electrical Circuits and Energy",
+          "description": "Investigate the transfer and transformation of energy in electrical circuits, including the role of circuit components, insulators and conductors",
+          "y_goal": "Students explain how energy is transferred and transformed in electrical circuits and describe the role of components, insulators and conductors",
+          "level_key": "6"
+        },
+        {
+          "code": "AC9S6U04",
+          "title": "Reversible and Irreversible Changes",
+          "description": "Compare reversible changes, including dissolving and changes of state, and irreversible changes, including cooking and rusting that produce new substances",
+          "y_goal": "Students compare reversible and irreversible changes, explaining what distinguishes them and identifying evidence that new substances have been produced",
+          "level_key": "6"
+        }
+      ]
+    },
     "7": {
       "subject": "Science",
       "standards": [
@@ -45,258 +255,6 @@
           "description": "Use a particle model to describe differences between pure substances and mixtures and apply understanding of properties of substances to separate mixtures",
           "y_goal": "Students use a particle model to explain the difference between pure substances and mixtures, and select and apply appropriate separation techniques based on properties of substances.",
           "level_key": "7"
-        }
-      ]
-    },
-    "6": {
-      "subject": "Science",
-      "standards": [
-        {
-          "code": "AC9S6U01",
-          "title": "Habitats and Living Things",
-          "description": "Investigate the physical conditions of a habitat and analyse how the growth and survival of living things is affected by changing physical conditions",
-          "y_goal": "Students analyse how physical conditions of a habitat affect the growth and survival of living things, and explain the relationship between changing conditions and organism responses",
-          "level_key": "6"
-        },
-        {
-          "code": "AC9S6U02",
-          "title": "Earth, Planets and Cyclic Phenomena",
-          "description": "Describe the movement of Earth and other planets relative to the sun and model how Earth's tilt, rotation on its axis and revolution around the sun relate to cyclic observable phenomena, including variable day and night length",
-          "y_goal": "Students model and explain how Earth's tilt, rotation and revolution produce cyclic observable phenomena including variable day and night length",
-          "level_key": "6"
-        },
-        {
-          "code": "AC9S6U03",
-          "title": "Electrical Circuits and Energy",
-          "description": "Investigate the transfer and transformation of energy in electrical circuits, including the role of circuit components, insulators and conductors",
-          "y_goal": "Students explain how energy is transferred and transformed in electrical circuits and describe the role of components, insulators and conductors",
-          "level_key": "6"
-        },
-        {
-          "code": "AC9S6U04",
-          "title": "Reversible and Irreversible Changes",
-          "description": "Compare reversible changes, including dissolving and changes of state, and irreversible changes, including cooking and rusting that produce new substances",
-          "y_goal": "Students compare reversible and irreversible changes, explaining what distinguishes them and identifying evidence that new substances have been produced",
-          "level_key": "6"
-        }
-      ]
-    },
-    "5": {
-      "subject": "Science",
-      "standards": [
-        {
-          "code": "AC9S5U01",
-          "title": "Structural Features and Survival",
-          "description": "Examine how particular structural features and behaviours of living things enable their survival in specific habitats",
-          "y_goal": "Students explain how specific structural features and behaviours of living things are adaptations that enable survival in particular habitats",
-          "level_key": "5"
-        },
-        {
-          "code": "AC9S5U02",
-          "title": "Earth Surface Changes",
-          "description": "Describe how weathering, erosion, transportation and deposition cause slow or rapid change to Earth's surface",
-          "y_goal": "Students describe how weathering, erosion, transportation and deposition change Earth's surface over slow and rapid timescales",
-          "level_key": "5"
-        },
-        {
-          "code": "AC9S5U03",
-          "title": "Light and Shadows",
-          "description": "Identify sources of light, recognise that light travels in a straight path and describe how shadows are formed and light can be reflected and refracted",
-          "y_goal": "Students explain that light travels in straight paths from sources and describe how shadows, reflection and refraction result from this",
-          "level_key": "5"
-        },
-        {
-          "code": "AC9S5U04",
-          "title": "Particle Model of Matter",
-          "description": "Explain observable properties of solids, liquids and gases by modelling the motion and arrangement of particles",
-          "y_goal": "Students use a particle model to explain the observable properties of solids, liquids and gases in terms of particle motion and arrangement",
-          "level_key": "5"
-        },
-        {
-          "code": "AC9S5H01",
-          "title": "Collaboration in Science",
-          "description": "Examine why advances in science are often the result of collaboration or build on the work of others",
-          "y_goal": "Students explain why scientific advances often depend on collaboration and building on prior work",
-          "level_key": "5"
-        },
-        {
-          "code": "AC9S5H02",
-          "title": "Science in Decision Making",
-          "description": "Investigate how scientific knowledge is used by individuals and communities to identify problems, consider responses and make decisions",
-          "y_goal": "Students explain how scientific knowledge informs individual and community problem identification, responses and decision making",
-          "level_key": "5"
-        }
-      ]
-    },
-    "4": {
-      "subject": "Science",
-      "standards": [
-        {
-          "code": "AC9S4U01",
-          "title": "Food Chains and Habitats",
-          "description": "Explain the roles and interactions of consumers, producers and decomposers within a habitat and how food chains represent feeding relationships",
-          "y_goal": "Students explain the roles of consumers, producers and decomposers in a habitat and represent feeding relationships using food chains",
-          "level_key": "4"
-        },
-        {
-          "code": "AC9S4U02",
-          "title": "Water Cycle",
-          "description": "Identify sources of water and describe key processes in the water cycle, including movement of water through the sky, landscape and ocean; precipitation; evaporation; and condensation",
-          "y_goal": "Students describe the key processes of the water cycle including precipitation, evaporation and condensation and trace the movement of water through sky, landscape and ocean",
-          "level_key": "4"
-        },
-        {
-          "code": "AC9S4U03",
-          "title": "Forces and Motion",
-          "description": "Identify how forces can be exerted by one object on another and investigate the effect of frictional, gravitational and magnetic forces on the motion of objects",
-          "y_goal": "Students explain how frictional, gravitational and magnetic forces are exerted between objects and describe their effects on motion",
-          "level_key": "4"
-        },
-        {
-          "code": "AC9S4U04",
-          "title": "Properties of Materials",
-          "description": "Examine the properties of natural and made materials including fibres, metals, glass and plastics and consider how these properties influence their use",
-          "y_goal": "Students explain how the properties of natural and made materials determine their suitability for different uses",
-          "level_key": "4"
-        },
-        {
-          "code": "AC9S4H01",
-          "title": "Data and Scientific Explanations",
-          "description": "Examine how people use data to develop scientific explanations",
-          "y_goal": "Students explain how data is used to develop and support scientific explanations",
-          "level_key": "4"
-        },
-        {
-          "code": "AC9S4H02",
-          "title": "Science Solving Problems",
-          "description": "Consider how people use scientific explanations to meet a need or solve a problem",
-          "y_goal": "Students explain how scientific knowledge is applied to meet needs and solve real-world problems",
-          "level_key": "4"
-        }
-      ]
-    },
-    "3": {
-      "subject": "Science",
-      "standards": [
-        {
-          "code": "AC9S3U01",
-          "title": "Living and Non-living Things",
-          "description": "Compare characteristics of living and non-living things and examine the differences between the life cycles of plants and animals",
-          "y_goal": "Students compare characteristics of living and non-living things and explain differences between plant and animal life cycles",
-          "level_key": "3"
-        },
-        {
-          "code": "AC9S3U02",
-          "title": "Soils, Rocks and Minerals",
-          "description": "Compare the observable properties of soils, rocks and minerals and investigate why they are important Earth resources",
-          "y_goal": "Students compare observable properties of soils, rocks and minerals and explain their importance as Earth resources",
-          "level_key": "3"
-        },
-        {
-          "code": "AC9S3U03",
-          "title": "Heat Energy and Temperature",
-          "description": "Identify sources of heat energy and examine how temperature changes when heat energy is transferred from one object to another",
-          "y_goal": "Students identify heat energy sources and explain how temperature changes when heat energy transfers between objects",
-          "level_key": "3"
-        },
-        {
-          "code": "AC9S3U04",
-          "title": "States of Matter and Heat",
-          "description": "Investigate the observable properties of solids and liquids and how adding or removing heat energy leads to a change of state",
-          "y_goal": "Students describe observable properties of solids and liquids and explain how adding or removing heat energy causes changes of state",
-          "level_key": "3"
-        },
-        {
-          "code": "AC9S3H01",
-          "title": "Data and Scientific Explanations",
-          "description": "Examine how people use data to develop scientific explanations",
-          "y_goal": "Students explain how data is used to develop scientific explanations",
-          "level_key": "3"
-        },
-        {
-          "code": "AC9S3H02",
-          "title": "Science Solving Problems",
-          "description": "Consider how people use scientific explanations to meet a need or solve a problem",
-          "y_goal": "Students explain how scientific knowledge is applied to meet needs and solve problems",
-          "level_key": "3"
-        }
-      ]
-    },
-    "2": {
-      "subject": "Science",
-      "standards": [
-        {
-          "code": "AC9S2U01",
-          "title": "Earth in the Solar System",
-          "description": "Recognise Earth is a planet in the solar system and identify patterns in the changing position of the sun, moon, planets and stars in the sky",
-          "y_goal": "Students recognise Earth as a planet and identify patterns in the changing positions of the sun, moon, planets and stars",
-          "level_key": "2"
-        },
-        {
-          "code": "AC9S2U02",
-          "title": "Sound and Vibration",
-          "description": "Explore different actions to make sounds and how to make a variety of sounds, and recognise that sound energy causes objects to vibrate",
-          "y_goal": "Students explain that sound is produced by different actions and that sound energy causes objects to vibrate",
-          "level_key": "2"
-        },
-        {
-          "code": "AC9S2U03",
-          "title": "Physical Changes to Materials",
-          "description": "Recognise that materials can be changed physically without changing their material composition and explore the effect of different actions on materials including bending, twisting, stretching and breaking into smaller pieces",
-          "y_goal": "Students recognise that physical actions change the shape of materials without changing their composition",
-          "level_key": "2"
-        }
-      ]
-    },
-    "1": {
-      "subject": "Science",
-      "standards": [
-        {
-          "code": "AC9S1U01",
-          "title": "Basic Needs of Living Things",
-          "description": "Identify the basic needs of plants and animals, including air, water, food or shelter, and describe how the places they live meet those needs",
-          "y_goal": "Students identify the basic needs of plants and animals and describe how their habitat meets those needs",
-          "level_key": "1"
-        },
-        {
-          "code": "AC9S1U02",
-          "title": "Daily and Seasonal Changes",
-          "description": "Describe daily and seasonal changes in the environment and explore how these changes affect everyday life",
-          "y_goal": "Students describe daily and seasonal environmental changes and explain how these affect everyday life",
-          "level_key": "1"
-        },
-        {
-          "code": "AC9S1U03",
-          "title": "Pushes and Pulls",
-          "description": "Describe pushes and pulls in terms of strength and direction and predict the effect of these forces on objects' motion and shape",
-          "y_goal": "Students describe pushes and pulls in terms of strength and direction and predict their effects on motion and shape",
-          "level_key": "1"
-        }
-      ]
-    },
-    "F": {
-      "subject": "Science",
-      "standards": [
-        {
-          "code": "AC9SFU01",
-          "title": "Features of Plants and Animals",
-          "description": "Observe external features of plants and animals and describe ways they can be grouped based on these features",
-          "y_goal": "Students observe external features of plants and animals and group them based on those features",
-          "level_key": "F"
-        },
-        {
-          "code": "AC9SFU02",
-          "title": "How Objects Move",
-          "description": "Describe how objects move and how factors including their size, shape or material influence their movement",
-          "y_goal": "Students describe how objects move and explain how size, shape and material influence movement",
-          "level_key": "F"
-        },
-        {
-          "code": "AC9SFU03",
-          "title": "Materials and Their Properties",
-          "description": "Recognise that objects can be composed of different materials and describe the observable properties of those materials",
-          "y_goal": "Students recognise that objects are made of materials and describe the observable properties of those materials",
-          "level_key": "F"
         }
       ]
     },
@@ -479,39 +437,53 @@
                     "code": "AC9S3U01",
                     "children": [
                       {
-                        "code": "AC9S5U01",
+                        "code": "AC9S4U01",
                         "children": [
                           {
-                            "code": "AC9S6U01",
+                            "code": "AC9S5U01",
                             "children": [
                               {
-                                "code": "AC9S7U01",
+                                "code": "AC9S6U01",
                                 "children": [
                                   {
-                                    "code": "AC9S8U01",
+                                    "code": "AC9S7U01",
                                     "children": [
                                       {
-                                        "code": "AC9S9U01",
+                                        "code": "AC9S8U01",
                                         "children": [
                                           {
-                                            "code": "AC9S10U01",
-                                            "children": []
+                                            "code": "AC9S9U01",
+                                            "children": [
+                                              {
+                                                "code": "AC9S10U01",
+                                                "children": []
+                                              },
+                                              {
+                                                "code": "AC9S10U02",
+                                                "children": []
+                                              }
+                                            ]
                                           },
                                           {
-                                            "code": "AC9S10U02",
-                                            "children": []
+                                            "code": "AC9S9U02",
+                                            "children": [
+                                              {
+                                                "code": "AC9S10U01",
+                                                "children": []
+                                              },
+                                              {
+                                                "code": "AC9S10U02",
+                                                "children": []
+                                              }
+                                            ]
                                           }
                                         ]
                                       },
                                       {
-                                        "code": "AC9S9U02",
+                                        "code": "AC9S8U02",
                                         "children": [
                                           {
-                                            "code": "AC9S10U01",
-                                            "children": []
-                                          },
-                                          {
-                                            "code": "AC9S10U02",
+                                            "code": "AC9S9U01",
                                             "children": []
                                           }
                                         ]
@@ -519,25 +491,16 @@
                                     ]
                                   },
                                   {
-                                    "code": "AC9S8U02",
+                                    "code": "AC9S7U02",
                                     "children": [
                                       {
-                                        "code": "AC9S9U01",
-                                        "children": []
-                                      }
-                                    ]
-                                  }
-                                ]
-                              },
-                              {
-                                "code": "AC9S7U02",
-                                "children": [
-                                  {
-                                    "code": "AC9S9U03",
-                                    "children": [
-                                      {
-                                        "code": "AC9S10U04",
-                                        "children": []
+                                        "code": "AC9S9U03",
+                                        "children": [
+                                          {
+                                            "code": "AC9S10U04",
+                                            "children": []
+                                          }
+                                        ]
                                       }
                                     ]
                                   }
@@ -581,11 +544,21 @@
             "code": "AC9S3U02",
             "children": [
               {
-                "code": "AC9S8U03",
+                "code": "AC9S4U02",
                 "children": [
                   {
-                    "code": "AC9S8U04",
-                    "children": []
+                    "code": "AC9S5U02",
+                    "children": [
+                      {
+                        "code": "AC9S8U03",
+                        "children": [
+                          {
+                            "code": "AC9S8U04",
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
@@ -596,15 +569,6 @@
             "children": [
               {
                 "code": "AC9S7U03",
-                "children": []
-              }
-            ]
-          },
-          {
-            "code": "AC9S5U02",
-            "children": [
-              {
-                "code": "AC9S8U03",
                 "children": []
               }
             ]
@@ -661,11 +625,16 @@
             "code": "AC9S3U03",
             "children": [
               {
-                "code": "AC9S8U05",
+                "code": "AC9S6U03",
                 "children": [
                   {
-                    "code": "AC9S9U05",
-                    "children": []
+                    "code": "AC9S8U05",
+                    "children": [
+                      {
+                        "code": "AC9S9U05",
+                        "children": []
+                      }
+                    ]
                   }
                 ]
               }
